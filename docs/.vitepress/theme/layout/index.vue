@@ -23,16 +23,16 @@
     </template>
     <template #doc-after>
       <h6>doc-after</h6>
-      <!-- <Comment />
+      <Comment />
+      <!-- 
       <ClientOnly>
         <ImagePreview />
         <BackToTop />
       </ClientOnly> -->
     </template>
     <!-- 此处将渲染 markdown 内容 -->
-    <!-- <div v-if="layout === 'home'">Custom home page!</div>
+    <div v-if="layout === 'home'">Custom home page!</div>
     <div v-if="pageNotFound">Custom 404 page!</div>
-    <Content v-else /> -->
   </Layout>
 </template>
 <script setup lang="ts">
@@ -40,7 +40,7 @@ import Theme from "vitepress/theme";
 import Home from "../pages/Home/index.vue";
 // import Sidebar from "../components/Sidebar/index.vue";
 // import Footer from "../components/Footer/index.vue";
-// import Comment from "../components/Comment/index.vue";
+import Comment from "../components/Comment/index.vue";
 // import ImagePreview from "../components/ImagePreview/index.vue";
 // import BackToTop from "../components/BackToTop/index.vue";
 // import DocMeta from "../components/DocMeta/index.vue";

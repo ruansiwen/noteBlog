@@ -1,64 +1,11 @@
 import fs from "node:fs";
 import NodePath from "node:path";
-// import glob from "fast-glob";
+import glob from "fast-glob";
 import { spawn, spawnSync } from "node:child_process";
 import { ArticleItem, ThemeConfig, ThemeConfigType } from "../../types";
 import { DefaultTheme } from "vitepress";
 import dayjs from "dayjs";
 import process from "node:process";
-
-export const getFilesInfo = () => {
-  const srcDir = process.argv.slice(2)?.[1] || ".";
-  console.log("获取项目路径", srcDir, process.argv);
-
-  // 获取当前项目下所有md
-  const files = fs.readdirSync(`${srcDir}/**/*.md`, {
-    ignore: ["node_modules"],
-  });
-  // const files = glob.sync(`${srcDir}/**/*.md`, { ignore: ["node_modules"] });
-  // console.log("files: ", files);
-  const filesInfo: ArticleItem[] = files.map((file) => {
-    const path = file.replace(".md", "").replace("docs", "");
-    const fileContent = fs.readFileSync(file, "utf-8");
-    /* 
-        TODO: 封面计划在md的frontmatter中配置，暂定使用正则匹配
-      */
-    const { title, description, cover, sticky, category } =
-      getArticleInfo(fileContent);
-    /* 
-        原计划按照文件修改时间为准，但是为了避免文件误修改导致文件修改时间改变
-        文章发布时间按照git的timestamp为准
-      */
-    const { date, month, day, updateTime } = getFileBirthTime(file);
-    // const description = getArticleInfo(fileContent) || "";
-
-    const fileInfo: ArticleItem = {
-      path,
-      title,
-      description,
-      date,
-      updateTime,
-      month,
-      day,
-      cover,
-      sticky,
-      category,
-    };
-
-    return fileInfo;
-  });
-  // 固定页面的路径
-  const PAGES_PATH = [
-    `/index`, // 首页
-    `/about`, // 关于
-    `/archive`, // 归档
-  ];
-  // 去掉固定页面，其余为文章
-  const filesList = filesInfo
-    .filter((item) => !PAGES_PATH.includes(item.path))
-    .sort((a, b) => +dayjs(b.date) - +dayjs(a.date));
-  return filesList;
-};
 
 export const clearMatterContent = (content: string) => {
   let first___: unknown;
@@ -83,6 +30,43 @@ export const clearMatterContent = (content: string) => {
   return {
     frontmatterContent: lines.slice(0, (second___ as number) || 0),
     articleContent: lines.slice((second___ as number) || 0).join("\n"),
+  };
+};
+// 获取文章发布时间
+export const getFileBirthTime = (url: string) => {
+  let date: string = dayjs().format("YYYY-MM-DD hh:mm:ss");
+  let updateTime: string = dayjs().format("YYYY-MM-DD hh:mm:ss");
+
+  try {
+    // 使用git log命令获取文件的提交时间
+    // git log --pretty=%ci --reverse docs/note/network/TCP.md
+    // --reverse  倒序
+    const timelineData = spawnSync("git", [
+      "log",
+      '--pretty="%ci"',
+      "--reverse",
+      url,
+    ])
+      .stdout?.toString()
+      .trim()
+      .replace(/["']/g, "")
+      .split("\n");
+
+    if (timelineData) {
+      date = dayjs(timelineData[0]).format("YYYY-MM-DD hh:mm:ss");
+      updateTime = dayjs(timelineData[timelineData.length - 1]).format(
+        "YYYY-MM-DD hh:mm:ss"
+      );
+    }
+  } catch (error) {
+    console.log("error:", error);
+  }
+
+  return {
+    date,
+    updateTime: dayjs(updateTime).format("YYYY-MM-DD hh:mm:ss"),
+    month: dayjs(date).format("YYYY-MM"),
+    day: dayjs(date).format("YYYY-MM-DD"),
   };
 };
 
@@ -155,6 +139,58 @@ export const getArticleInfo = (text: string, count = 180) => {
     sticky,
     category,
   };
+};
+
+export const getFilesInfo = () => {
+  const srcDir = process.argv.slice(2)?.[1] || ".";
+  console.log("获取项目路径", srcDir, process.argv);
+
+  // 获取当前项目下所有md
+  const files = glob.sync(`${srcDir}/**/*.md`, { ignore: ["node_modules"] });
+  // console.log("files: ", files);
+  const filesInfo: ArticleItem[] = files.map((file) => {
+    const path = file.replace(".md", "").replace("docs", "");
+    const fileContent = fs.readFileSync(file, "utf-8");
+    /* 
+        TODO: 封面计划在md的frontmatter中配置，暂定使用正则匹配
+      */
+    const { title, description, cover, sticky, category } =
+      getArticleInfo(fileContent);
+    /* 
+        原计划按照文件修改时间为准，但是为了避免文件误修改导致文件修改时间改变
+        文章发布时间按照git的timestamp为准
+      */
+    const { date, month, day, updateTime } = getFileBirthTime(file);
+    // const description = getArticleInfo(fileContent) || "";
+
+    const fileInfo: ArticleItem = {
+      path,
+      title,
+      description,
+      date,
+      updateTime,
+      month,
+      day,
+      cover,
+      sticky,
+      category,
+    };
+
+    return fileInfo;
+  });
+  // 固定页面的路径
+  const PAGES_PATH = [
+    `/index`, // 首页
+    `/about`, // 关于
+    `/archive`, // 归档
+  ];
+  // 去掉固定页面，其余为文章
+  const filesList = filesInfo
+    .filter((item) => !PAGES_PATH.includes(item.path))
+    .sort((a, b) => +dayjs(b.date) - +dayjs(a.date));
+  console.log("文章列表", filesList);
+
+  return filesList;
 };
 
 // 拓展themeConfig

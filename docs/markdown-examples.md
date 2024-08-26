@@ -1,3 +1,8 @@
+---
+cover: logo.png
+sticky: 1
+category: 测试
+---
 # Markdown Extension Examples
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.

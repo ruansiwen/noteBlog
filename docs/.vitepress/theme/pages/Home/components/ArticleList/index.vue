@@ -38,7 +38,7 @@
 </template>
 <script setup lang="ts">
 import { ElPagination } from "element-plus";
-import { useRouter } from "vitepress";
+import { useData, useRouter } from "vitepress";
 import type { ArticleItem } from "../../../../types";
 import { ref } from "vue";
 
@@ -47,16 +47,24 @@ interface IProps {
   author: string;
 }
 
+defineProps<IProps>();
 const currentPage = ref(1);
 const pageSize = ref(5);
-
-defineProps<IProps>();
+const { site } = useData();
 
 const router = useRouter();
 
 // 点击查看文章
 const linkTo = (article: ArticleItem) => {
-  router.go(article.path);
+  console.log(site.value.base[0].endsWith("/"));
+
+  if (site.value.base) {
+    if (site.value.base[0].endsWith("/")) {
+      router.go(site.value.base.slice(0, -1) + article.path);
+    }
+  } else {
+    router.go(article.path);
+  }
 };
 
 const handleCurrentChange = (val: number) => {

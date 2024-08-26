@@ -7,10 +7,10 @@ export const themeConfig = getThemeConfig({
   author: "R",
   // 评论
   comment: {
-    repo: "Niu-bin/blog",
-    repoId: "R_kgDOLMBB5Q",
+    repo: "ruansiwen/noteBlog",
+    repoId: "R_kgDOMnn78A",
     category: "Announcements",
-    categoryId: "DIC_kwDOLMBB5c4Cc-ci",
+    categoryId: "DIC_kwDOMnn78M4Ch6HS",
     inputPosition: "bottom",
   },
   // 友链

@@ -6,12 +6,15 @@ export default defineConfig({
   title: "MOON",
   base: "/noteBlog/",
   lang: "en-US",
-  // extends: {
-  //   themeConfig,
-  // },
+  extends: {
+    themeConfig,
+  },
   // 站点的描述。这将呈现为页面 HTML 中的 <meta> 标签。
   description: "Keep Calm and Carry On",
-  head: [["link", { rel: "icon", href: "/noteBlog/favicon.icon" }]],
+  head: [
+    ["link", { rel: "icon", href: "/noteBlog/favicon.icon" }],
+    ["script", { src: "https://esm.sh/gitcus", type: "module" }],
+  ],
   markdown: {
     lineNumbers: true,
     container: {

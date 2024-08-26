@@ -10,7 +10,7 @@
     <!-- 波浪 -->
     <Waves />
     <div class="home_container">
-      <ArticleList :list="articleList" :author="'还没改'" />
+      <ArticleList :list="articleList" :author="theme.author" />
       <div class="container_right">
         <AuthorCard :autherInfo="autherInfo" :logo="logo" />
         <Concentration :list="stickyArticleList" />
@@ -118,7 +118,7 @@ const autherInfo = ref<AutherInfo>({
 });
 
 // 友链
-const friendLink = ref<FriendItem[]>(theme.value.friend || []);
+const friendLink = ref<FriendItem[]>([] || theme.value.friend);
 </script>
 <style lang="less" scoped>
 @keyframes blink {
