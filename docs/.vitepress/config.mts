@@ -29,21 +29,54 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config'
     // 顶上导航
     siteTitle: "MOON",
+    outline: [2, 3],
     logo: { light: "/nav.png", dark: "/nav.png", alt: "R" },
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" },
-    ],
-    // 侧边导航
-    sidebar: [
+      { text: "主页", link: "/" },
+      { text: "举例", link: "/markdown-examples" },
       {
-        text: "目录",
+        text: "前端",
         items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
+          { text: "HTML", link: "/front-end/HTML/html原生" },
+          { text: "css", link: "/front-end/CSS/css进阶" },
+          { text: "js", link: "" },
+          { text: "vue", link: "" },
+          { text: "react", link: "" },
         ],
       },
+      { text: "关于", link: "/about" },
     ],
+    // 侧边导航
+    // sidebar: [
+    //   {
+    //     text: "目录",
+    //     items: [
+    //       { text: "Markdown Examples", link: "/markdown-examples" },
+    //       { text: "Runtime API Examples", link: "/api-examples" },
+    //     ],
+    //   },
+    // ],
+    sidebar: {
+      "/front-end/HTML/": [
+        {
+          text: "HTML",
+          items: [
+            { text: "html介绍", link: "/front-end/HTML/html介绍" },
+            { text: "html原生", link: "/front-end/HTML/html原生" },
+          ],
+        },
+      ],
+      "/front-end/CSS/": [
+        {
+          text: "CSS",
+          items: [
+            { text: "css进阶", link: "/front-end/CSS/css进阶" },
+            { text: "css基础", link: "/front-end/CSS/css基础" },
+          ],
+        },
+      ],
+    },
+    aside: true,
     // 右上角
     socialLinks: [
       { icon: "github", link: "https://github.com/vuejs/vitepress" },
