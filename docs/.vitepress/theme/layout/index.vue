@@ -5,10 +5,10 @@
     </template>
     <template #layout-bottom>
       <h6>layout-bottom</h6>
-      <!-- <Footer v-if="layout === 'home'" />
+      <!-- <Footer v-if="layout === 'home'" /> -->
       <ClientOnly>
         <BoardPets />
-      </ClientOnly> -->
+      </ClientOnly>
     </template>
 
     <template #sidebar-nav-after>
@@ -23,7 +23,7 @@
     </template>
     <template #doc-after>
       <h6>doc-after</h6>
-      <Comment />
+      <Comment :theme="theme" />
       <!-- 
       <ClientOnly>
         <ImagePreview />
@@ -32,7 +32,11 @@
     </template>
     <!-- 此处将渲染 markdown 内容 -->
     <div v-if="layout === 'home'">Custom home page!</div>
+    <div v-if="layout === 'about'">Custom about page!</div>
     <div v-if="pageNotFound">Custom 404 page!</div>
+    <div>-----</div>
+    <Content />
+    <div>-----</div>
   </Layout>
 </template>
 <script setup lang="ts">
@@ -44,15 +48,17 @@ import Comment from "../components/Comment/index.vue";
 // import ImagePreview from "../components/ImagePreview/index.vue";
 // import BackToTop from "../components/BackToTop/index.vue";
 // import DocMeta from "../components/DocMeta/index.vue";
-// import BoardPets from "../components/BoardPets/index.vue";
+import BoardPets from "../components/BoardPets/index.vue";
 import { useData } from "vitepress";
 import { computed, nextTick, provide } from "vue";
 
 const { Layout } = Theme;
-const { page, frontmatter, isDark } = useData();
+const { page, frontmatter, isDark, theme } = useData();
 
 const layout = computed(() => frontmatter.value.layout);
 const pageNotFound = computed(() => page.value.isNotFound);
+
+console.log("layout======", layout.value);
 
 // 自定义颜色切换
 const enableTransitions = () => {
@@ -97,6 +103,7 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
   width: 1050px;
   gap: 20px;
 }
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

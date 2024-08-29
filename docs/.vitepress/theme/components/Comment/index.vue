@@ -1,18 +1,10 @@
 <template>
   <div class="comment_box">
-    <Giscus
-      v-if="showComment"
-      id="comments"
-      :repo="comment.repo"
-      :repoId="comment.repoId"
-      :category="comment.category"
-      :categoryId="comment.categoryId"
-      :mapping="comment.mapping || 'pathname'"
-      :inputPosition="comment.inputPosition || 'bottom'"
-      theme="light"
-      :lang="comment.lang || 'zh-CN'"
-      :loading="comment.loading || 'lazy'"
-    />
+    <!-- <Giscus v-if="showComment" id="comments" :repo="comment.repo || 'ruansiwen/noteBlog'" :repoId="comment.repoId"
+      :category="comment.category" :categoryId="comment.categoryId" :mapping="comment.mapping || 'pathname'"
+      :inputPosition="comment.inputPosition || 'bottom'" theme="light" :lang="comment.lang || 'zh-CN'"
+      :loading="comment.loading || 'lazy'" /> -->
+      <div>123</div>
   </div>
 </template>
 <script setup lang="ts">
@@ -21,11 +13,15 @@
 import { ref, watch, toRefs } from "vue";
 import { useData, useRoute } from "vitepress";
 
-// const { comment } = useConfig();
-const { theme } = useData();
 const route = useRoute();
 const showComment = ref(false);
-const { comment } = toRefs<any>(theme);
+const { theme: { comment } } = defineProps<{
+  theme
+}>()
+// const { comment } = useConfig();
+// const { theme } = useData();
+// const { comment } = toRefs<any>(theme);
+console.log(comment, comment.repo);
 
 watch(
   () => route.path,

@@ -13,7 +13,20 @@ export default defineConfig({
   description: "Keep Calm and Carry On",
   head: [
     ["link", { rel: "icon", href: "/noteBlog/favicon.icon" }],
-    ["script", { src: "https://esm.sh/gitcus", type: "module" }],
+    // [
+    //   "module",
+    //   {
+    //     async: "",
+    //     src: "https://files.cnblogs.com/files/liuzhou1/L2Dwidget.min.js",
+    //   },
+    // ],
+    // [
+    //   "module",
+    //   {
+    //     async: "",
+    //     src: "https://l2dwidget.js.org/lib/L2Dwidget.min.js",
+    //   },
+    // ],
   ],
   markdown: {
     lineNumbers: true,
@@ -39,10 +52,18 @@ export default defineConfig({
         items: [
           { text: "HTML", link: "/front-end/HTML/html原生" },
           { text: "css", link: "/front-end/CSS/css进阶" },
-          { text: "js", link: "" },
-          { text: "vue", link: "" },
-          { text: "react", link: "" },
+          { text: "js", link: "/front-end/JS/js基础" },
+          { text: "vue", link: "/front-end/VUE/vue基础" },
+          { text: "react", link: "/front-end/REACT/react基础" },
         ],
+      },
+      {
+        text: "后端",
+        items: [],
+      },
+      {
+        text: "运维",
+        items: [],
       },
       { text: "关于", link: "/about" },
     ],
@@ -73,6 +94,24 @@ export default defineConfig({
             { text: "css进阶", link: "/front-end/CSS/css进阶" },
             { text: "css基础", link: "/front-end/CSS/css基础" },
           ],
+        },
+      ],
+      "/front-end/JS/": [
+        {
+          text: "JS",
+          items: [{ text: "js基础", link: "/front-end/JS/js基础" }],
+        },
+      ],
+      "/front-end/VUE/": [
+        {
+          text: "VUE",
+          items: [{ text: "vue基础", link: "/front-end/VUE/vue基础" }],
+        },
+      ],
+      "/front-end/REACT/": [
+        {
+          text: "REACT",
+          items: [{ text: "react基础", link: "/front-end/REACT/react基础" }],
         },
       ],
     },
