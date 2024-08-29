@@ -23,7 +23,8 @@
     </template>
     <template #doc-after>
       <h6>doc-after</h6>
-      <Comment :theme="theme" />
+      <!-- <Comment :theme="theme" /> -->
+      <Comment v-if="!isHome" :key="page.filePath"></Comment>
       <!-- 
       <ClientOnly>
         <ImagePreview />
@@ -40,6 +41,7 @@
   </Layout>
 </template>
 <script setup lang="ts">
+import { unref } from "vue";
 import Theme from "vitepress/theme";
 import Home from "../pages/Home/index.vue";
 // import Sidebar from "../components/Sidebar/index.vue";
@@ -57,7 +59,7 @@ const { page, frontmatter, isDark, theme } = useData();
 
 const layout = computed(() => frontmatter.value.layout);
 const pageNotFound = computed(() => page.value.isNotFound);
-
+const isHome = computed(() => unref(page)?.filePath === "index.md");
 console.log("layout======", layout.value);
 
 // 自定义颜色切换

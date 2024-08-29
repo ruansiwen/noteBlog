@@ -51,10 +51,10 @@ export default defineConfig({
         text: "前端",
         items: [
           { text: "HTML", link: "/front-end/HTML/html原生" },
-          { text: "css", link: "/front-end/CSS/css进阶" },
-          { text: "js", link: "/front-end/JS/js基础" },
-          { text: "vue", link: "/front-end/VUE/vue基础" },
-          { text: "react", link: "/front-end/REACT/react基础" },
+          { text: "CSS", link: "/front-end/CSS/css进阶" },
+          { text: "JavaScript", link: "/front-end/JS/js基础" },
+          { text: "Vue", link: "/front-end/VUE/vue基础" },
+          { text: "React", link: "/front-end/REACT/react基础" },
         ],
       },
       {
