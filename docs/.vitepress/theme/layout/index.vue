@@ -1,10 +1,9 @@
 <template>
   <Layout>
     <template #home-hero-before>
-      <Home />
+      <Home/>
     </template>
     <template #layout-bottom>
-      <h6>layout-bottom</h6>
       <!-- <Footer v-if="layout === 'home'" /> -->
       <ClientOnly>
         <BoardPets />
@@ -22,9 +21,8 @@
       </ClientOnly> -->
     </template>
     <template #doc-after>
-      <h6>doc-after</h6>
-      <!-- <Comment :theme="theme" /> -->
-      <Comment v-if="!isHome" :key="page.filePath"></Comment>
+      <!-- 评论 -->
+      <Comment v-if="!isHome" :theme="theme" :key="page.filePath"></Comment>
       <!-- 
       <ClientOnly>
         <ImagePreview />
