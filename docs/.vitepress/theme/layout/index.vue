@@ -5,9 +5,10 @@
     </template>
     <template #layout-bottom>
       <!-- <Footer v-if="layout === 'home'" /> -->
-      <ClientOnly>
+      <!-- 看板娘 -->
+      <!-- <ClientOnly>
         <BoardPets />
-      </ClientOnly>
+      </ClientOnly> -->
     </template>
 
     <template #sidebar-nav-after>
@@ -51,6 +52,7 @@ import Comment from "../components/Comment/index.vue";
 import BoardPets from "../components/BoardPets/index.vue";
 import { useData } from "vitepress";
 import { computed, nextTick, provide } from "vue";
+import { useOml2d } from '../hooks/useOml2d';
 
 const { Layout } = Theme;
 const { page, frontmatter, isDark, theme } = useData();
@@ -59,6 +61,9 @@ const layout = computed(() => frontmatter.value.layout);
 const pageNotFound = computed(() => page.value.isNotFound);
 const isHome = computed(() => unref(page)?.filePath === "index.md");
 console.log("layout======", layout.value);
+
+// 看板娘
+useOml2d()
 
 // 自定义颜色切换
 const enableTransitions = () => {
@@ -95,9 +100,12 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
     }
   );
 });
+
+
 </script>
 
 <style>
+
 .home_container {
   display: flex;
   width: 1050px;
@@ -117,6 +125,28 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
 
 ::view-transition-new(root),
 .dark::view-transition-old(root) {
+  z-index: 9999;
+}
+
+.VPSwitchAppearance {
+  width: 22px !important;
+}
+
+.VPSwitchAppearance .check {
+  transform: none !important;
+}
+
+/* 为暗色模式添加样式 */
+@media (prefers-color-scheme: dark) {
+  .root {
+    animation: none;
+    mix-blend-mode: normal;
+    z-index: 1;
+  }
+}
+.light .root {
+  animation: none;
+  mix-blend-mode: normal;
   z-index: 9999;
 }
 

@@ -13,6 +13,7 @@
 import { ref, watch, toRefs, onMounted, onBeforeMount } from "vue";
 import { useData, useRoute } from "vitepress";
 import type { Ref } from "vue";
+import { loadOml2d } from 'oh-my-live2d';
 
 const route = useRoute();
 const data = useData();

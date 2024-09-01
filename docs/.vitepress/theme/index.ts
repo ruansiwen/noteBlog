@@ -17,8 +17,18 @@ const MineTheme: Theme = {
    * router:VitePress 路由实例
    * siteData:站点级元数据
    */
-  enhanceApp({ app, router, siteData }: EnhanceAppContext): Awaitable<void> {
+  async enhanceApp({ app, router, siteData }: EnhanceAppContext){
     // ctx.app.component("Archive", Archive); // 全局注册组件
+    // if (!import.meta!.env.SSR) {
+    //   const { loadOml2d } = await import('oh-my-live2d');
+    //   loadOml2d({
+    //     models: [
+    //       {
+    //         path: 'https://cdn.jsdelivr.net/gh/Eikanya/Live2d-model/Live2D/Senko_Normals/senko.model3.json'
+    //       }
+    //     ]
+    //   });
+    // }
   },
 };
 

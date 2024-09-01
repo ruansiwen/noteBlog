@@ -15,6 +15,7 @@
     "axios": "^1.7.5",
     "dayjs": "^1.11.13",
     "element-plus": "^2.8.1",
-    "fast-glob": "^3.3.2"
+    "fast-glob": "^3.3.2",
+    "oh-my-live2d": "^0.19.3"
   }
 }
