@@ -39,9 +39,11 @@ const title = frontmatter.value.blog?.name;
 const logo = frontmatter.value.blog?.logo;
 const bgImage = frontmatter.value.blog?.bg;
 
+console.log("首页", frontmatter.value.blog?.description);
+
 const { currentString } = useTypewriter(
   frontmatter.value.blog?.description,
-  120
+  200
 );
 
 const articleList = ref<ArticleItem[]>(

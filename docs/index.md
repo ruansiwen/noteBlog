@@ -28,7 +28,9 @@ blog:
   author: 友人A
   logo: logo.png
   name: "Rの笔记"
-  description: 一个普通码农
+  description:
+    - 一个普通码农
+    - 梦想是赚很多钱
+    - 前端入门
   bg: bg.jpeg
 ---
-

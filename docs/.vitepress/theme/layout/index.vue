@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <template #home-hero-before>
-      <Home/>
+      <Home />
     </template>
     <template #layout-bottom>
       <!-- <Footer v-if="layout === 'home'" /> -->
