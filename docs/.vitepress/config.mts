@@ -84,6 +84,7 @@ export default defineConfig({
           items: [
             { text: "html介绍", link: "/front-end/HTML/html介绍" },
             { text: "html原生", link: "/front-end/HTML/html原生" },
+            { text: "CSP非官方指南", link: "/front-end/HTML/CSP非官方指南" },
           ],
         },
       ],
@@ -111,7 +112,10 @@ export default defineConfig({
       "/front-end/REACT/": [
         {
           text: "REACT",
-          items: [{ text: "react基础", link: "/front-end/REACT/react基础" }],
+          items: [
+            { text: "react基础", link: "/front-end/REACT/react基础" },
+            { text: "react状态管理", link: "/front-end/REACT/react状态管理" },
+          ],
         },
       ],
     },
