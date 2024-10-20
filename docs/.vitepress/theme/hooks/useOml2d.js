@@ -8,34 +8,34 @@ export function useOml2d() {
   const oml2dOptions = {
     dockedPosition: "left",
     models: [
-      {
-        path: "https://model.oml2d.com/shizuku/shizuku.model.json",
-        mobilePosition: [0, 200],
-        mobileScale: 0.2,
-        name: "同学",
-        scale: 0.13,
-        position: [40, 100],
-        rotation: 0,
-        showHitAreaFrames: true,
-        stageStyle: {
-          height: 320,
-        },
-        volume: 0.5,
-      },
-      {
-        path: "https://model.oml2d.com/platelet/model.json",
-        mobilePosition: [0, 200],
-        mobileScale: 0.2,
-        name: "血小板",
-        scale: 0.13,
-        position: [60, 60],
-        rotation: 0,
-        showHitAreaFrames: true,
-        stageStyle: {
-          height: 320,
-        },
-        volume: 0.5,
-      },
+      // {
+      //   path: "https://model.oml2d.com/shizuku/shizuku.model.json",
+      //   mobilePosition: [0, 200],
+      //   mobileScale: 0.2,
+      //   name: "同学",
+      //   scale: 0.13,
+      //   position: [40, 100],
+      //   rotation: 0,
+      //   showHitAreaFrames: true,
+      //   stageStyle: {
+      //     height: 320,
+      //   },
+      //   volume: 0.5,
+      // },
+      // {
+      //   path: "https://model.oml2d.com/platelet/model.json",
+      //   mobilePosition: [0, 200],
+      //   mobileScale: 0.2,
+      //   name: "血小板",
+      //   scale: 0.13,
+      //   position: [60, 60],
+      //   rotation: 0,
+      //   showHitAreaFrames: true,
+      //   stageStyle: {
+      //     height: 320,
+      //   },
+      //   volume: 0.5,
+      // },
       {
         path: "https://model.oml2d.com/cat-white/model.json",
         mobilePosition: [0, 200],

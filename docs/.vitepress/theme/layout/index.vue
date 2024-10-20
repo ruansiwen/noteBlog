@@ -52,7 +52,7 @@ import Comment from "../components/Comment/index.vue";
 import BoardPets from "../components/BoardPets/index.vue";
 import { useData } from "vitepress";
 import { computed, nextTick, provide } from "vue";
-import { useOml2d } from '../hooks/useOml2d';
+import { useOml2d } from "../hooks/useOml2d";
 
 const { Layout } = Theme;
 const { page, frontmatter, isDark, theme } = useData();
@@ -63,7 +63,7 @@ const isHome = computed(() => unref(page)?.filePath === "index.md");
 console.log("layout======", layout.value);
 
 // 看板娘
-useOml2d()
+useOml2d();
 
 // 自定义颜色切换
 const enableTransitions = () => {
@@ -100,12 +100,9 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
     }
   );
 });
-
-
 </script>
 
 <style>
-
 .home_container {
   display: flex;
   width: 1050px;

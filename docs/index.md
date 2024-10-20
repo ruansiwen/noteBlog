@@ -31,6 +31,6 @@ blog:
   description:
     - 一个普通码农
     - 梦想是赚很多钱
-    - 前端入门
+    - fail again , fail better
   bg: bg.jpeg
 ---
