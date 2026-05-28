@@ -16,6 +16,6 @@
     "dayjs": "^1.11.21",
     "element-plus": "^2.14.0",
     "fast-glob": "^3.3.3",
-    "oh-my-live2d": "^0.19.3"
+    "l2d-widget": "^0.1.0"
   }
 }

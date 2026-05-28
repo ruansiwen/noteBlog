@@ -4,21 +4,9 @@
       <Home />
     </template>
     <template #layout-bottom>
-      <!-- <Footer v-if="layout === 'home'" /> -->
-      <!-- 看板娘 -->
-      <!-- <ClientOnly>
-        <BoardPets />
-      </ClientOnly> -->
     </template>
-
     <template #doc-after>
-      <!-- 评论 -->
       <Comment v-if="!isHome" :theme="theme" :key="page.filePath"></Comment>
-      <!-- 
-      <ClientOnly>
-        <ImagePreview />
-        <BackToTop />
-      </ClientOnly> -->
     </template>
   </Layout>
 </template>
@@ -26,22 +14,14 @@
 import { unref } from "vue";
 import Theme from "vitepress/theme";
 import Home from "../pages/Home/index.vue";
-// import Sidebar from "../components/Sidebar/index.vue";
-// import Footer from "../components/Footer/index.vue";
 import Comment from "../components/Comment/index.vue";
-// import ImagePreview from "../components/ImagePreview/index.vue";
-// import BackToTop from "../components/BackToTop/index.vue";
-// import DocMeta from "../components/DocMeta/index.vue";
-import BoardPets from "../components/BoardPets/index.vue";
 import { useData } from "vitepress";
 import { computed, nextTick, provide } from "vue";
 import { useOml2d } from "../hooks/useOml2d";
 
 const { Layout } = Theme;
-const { page, frontmatter, isDark, theme } = useData();
+const { page, isDark, theme } = useData();
 
-const layout = computed(() => frontmatter.value.layout);
-const pageNotFound = computed(() => page.value.isNotFound);
 const isHome = computed(() => unref(page)?.filePath === "index.md");
 
 // 看板娘
