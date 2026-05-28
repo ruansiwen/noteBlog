@@ -11,16 +11,6 @@
       </ClientOnly> -->
     </template>
 
-    <template #sidebar-nav-after>
-      <h6>sidebar-nav-after</h6>
-      <!-- <Sidebar /> -->
-    </template>
-    <template #doc-before>
-      <h6>doc-before</h6>
-      <!-- <ClientOnly>
-        <DocMeta :category="frontmatter.category" />
-      </ClientOnly> -->
-    </template>
     <template #doc-after>
       <!-- 评论 -->
       <Comment v-if="!isHome" :theme="theme" :key="page.filePath"></Comment>
@@ -30,13 +20,6 @@
         <BackToTop />
       </ClientOnly> -->
     </template>
-    <!-- 此处将渲染 markdown 内容 -->
-    <div v-if="layout === 'home'">Custom home page!</div>
-    <div v-if="layout === 'about'">Custom about page!</div>
-    <div v-if="pageNotFound">Custom 404 page!</div>
-    <div>-----</div>
-    <Content />
-    <div>-----</div>
   </Layout>
 </template>
 <script setup lang="ts">
@@ -60,7 +43,6 @@ const { page, frontmatter, isDark, theme } = useData();
 const layout = computed(() => frontmatter.value.layout);
 const pageNotFound = computed(() => page.value.isNotFound);
 const isHome = computed(() => unref(page)?.filePath === "index.md");
-console.log("layout======", layout.value);
 
 // 看板娘
 useOml2d();

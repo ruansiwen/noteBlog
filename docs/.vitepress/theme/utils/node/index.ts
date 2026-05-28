@@ -143,7 +143,6 @@ export const getArticleInfo = (text: string, count = 180) => {
 
 export const getFilesInfo = () => {
   const srcDir = process.argv.slice(2)?.[1] || ".";
-  console.log("获取项目路径", srcDir, process.argv);
 
   // 获取当前项目下所有md
   const files = glob.sync(`${srcDir}/**/*.md`, { ignore: ["node_modules"] });
@@ -188,7 +187,6 @@ export const getFilesInfo = () => {
   const filesList = filesInfo
     .filter((item) => !PAGES_PATH.includes(item.path))
     .sort((a, b) => +dayjs(b.date) - +dayjs(a.date));
-  console.log("文章列表", filesList);
 
   return filesList;
 };

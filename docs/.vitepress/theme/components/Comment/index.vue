@@ -10,13 +10,11 @@
 <script setup lang="ts">
 // import Giscus from "@giscus/vue";
 // import { useConfig } from "../../utils/client";
-import { ref, watch, toRefs, onMounted, onBeforeMount } from "vue";
-import { useData, useRoute } from "vitepress";
+import { ref, watch, onMounted } from "vue";
+import { useRoute } from "vitepress";
 import type { Ref } from "vue";
-import { loadOml2d } from 'oh-my-live2d';
 
 const route = useRoute();
-const data = useData();
 const commentRef: Ref<HTMLElement | null> = ref(null);
 const showComment = ref(false);
 // const {
