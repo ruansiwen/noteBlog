@@ -182,10 +182,11 @@ export const getFilesInfo = () => {
     `/index`, // 首页
     `/about`, // 关于
     `/archive`, // 归档
+    `/github`, // GitHub
   ];
-  // 去掉固定页面，其余为文章
+  // 去掉固定页面和没有标题的文章，其余为文章
   const filesList = filesInfo
-    .filter((item) => !PAGES_PATH.includes(item.path))
+    .filter((item) => !PAGES_PATH.includes(item.path) && item.title)
     .sort((a, b) => +dayjs(b.date) - +dayjs(a.date));
 
   return filesList;

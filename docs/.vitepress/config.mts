@@ -3,7 +3,7 @@ import { themeConfig } from "./theme-config";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   // 站点的标题
-  title: "MOON",
+  title: "W",
   base: "/noteBlog/",
   lang: "en-US",
   extends: {
@@ -41,12 +41,12 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config'
     // 顶上导航
-    siteTitle: "MOON",
+    siteTitle: "W",
     outline: [2, 3],
     logo: { light: "/nav.png", dark: "/nav.png", alt: "R" },
     nav: [
       { text: "主页", link: "/" },
-      { text: "举例", link: "/markdown-examples" },
+      // { text: "举例", link: "/markdown-examples" },
       {
         text: "前端",
         items: [
@@ -66,6 +66,7 @@ export default defineConfig({
         items: [],
       },
       { text: "关于", link: "/about" },
+      { text: "GitHub", link: "/github" },
     ],
     // 侧边导航
     // sidebar: [

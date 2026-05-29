@@ -1,3 +1,36 @@
+// 布局最大宽度加大，避免导航栏拥挤
+:root {
+  --vp-layout-max-width: 1600px;
+}
+
+// 导航栏右侧增加 padding
+.VPNavBar .content-body {
+  padding-right: 16px;
+}
+
+// 背景图片 - 通过 JS 动态设置 CSS 变量 --bg-image-url
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2; // 最底层
+  background-image: var(--bg-image-url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: var(--bg-content-opacity, 0.15);
+}
+
+// 内容区域半透明背景
+.VPNav {
+  backdrop-filter: blur(10px);
+  background-color: rgba(var(--bg-gradient), 0.85) !important;
+}
+
+.VPSidebar {
+  backdrop-filter: blur(8px);
+}
+
 html {
   --bg-gradient: 255, 255, 255, 0.1;
   --bg-gradient-home: 255, 255, 255;
@@ -120,6 +153,23 @@ html.dark {
   --box-shadow-hover: 0 2px 16px 0 rgba(0, 0, 0, 0.7);
   --badge-font-color: #bdc3cc;
   --description-font-color: #9facba;
+
+  // 暗色模式下背景图加暗色遮罩（在背景图之上）
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .VPNav {
+    background-color: rgba(20, 20, 20, 0.9) !important;
+  }
+
+  .VPSidebar {
+    background-color: rgba(20, 20, 20, 0.85) !important;
+  }
 }
 
 // .Layout {

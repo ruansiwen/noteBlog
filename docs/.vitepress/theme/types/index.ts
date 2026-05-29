@@ -50,6 +50,12 @@ export interface FriendItem {
   link: string;
 }
 
+// 背景图片配置
+export interface BackgroundConfig {
+  url: string;
+  opacity?: number; // 0-1，透明度，默认 0.15
+}
+
 // 定制主题配置
 export interface ThemeConfig {
   lang?: string;
@@ -59,6 +65,7 @@ export interface ThemeConfig {
   author?: string;
   comment?: CommentConfig;
   friend?: FriendItem[];
+  background?: BackgroundConfig;
 }
 
 export type ThemeConfigType = DefaultTheme.Config & {

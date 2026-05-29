@@ -117,7 +117,7 @@ const autherInfo = ref<AutherInfo>({
 });
 
 // 友链
-const friendLink = ref<FriendItem[]>([] || theme.value.friend);
+const friendLink = ref<FriendItem[]>(theme.value.friend || []);
 </script>
 <style lang="less" scoped>
 @keyframes blink {

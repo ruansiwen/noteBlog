@@ -11,7 +11,7 @@
   </Layout>
 </template>
 <script setup lang="ts">
-import { unref } from "vue";
+import { unref, onMounted, watch } from "vue";
 import Theme from "vitepress/theme";
 import Home from "../pages/Home/index.vue";
 import Comment from "../components/Comment/index.vue";
@@ -26,6 +26,18 @@ const isHome = computed(() => unref(page)?.filePath === "index.md");
 
 // 看板娘
 useOml2d();
+
+// 背景图片
+const bgConfig = computed(() => theme.value.background);
+const applyBg = () => {
+  const url = bgConfig.value?.url;
+  if (!url) return;
+  const opacity = bgConfig.value?.opacity ?? 0.15;
+  document.documentElement.style.setProperty("--bg-image-url", `url(${url})`);
+  document.documentElement.style.setProperty("--bg-content-opacity", String(opacity));
+};
+onMounted(applyBg);
+watch(bgConfig, applyBg);
 
 // 自定义颜色切换
 const enableTransitions = () => {
@@ -85,6 +97,12 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
 ::view-transition-new(root),
 .dark::view-transition-old(root) {
   z-index: 9999;
+}
+
+/* 隐藏 VitePress 默认 hero 区域（"W 一个普通码农"）和 features 区域（Feature A/B/C） */
+.VPHero,
+.VPFeatures {
+  display: none !important;
 }
 
 .VPSwitchAppearance {

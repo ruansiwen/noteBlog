@@ -6,9 +6,9 @@ navbar: true
 
 
 ## 笔记博客相关
-使用框架：vitepress
+使用框架：[VitePress](https://vitepress.dev/)
 
-看板娘：https://oml2d.com/
+看板娘：[l2d-widget](https://github.com/hacxy/l2d-widget)（作者 hacxy）
 
 借鉴：http://niubin.site/
 
